@@ -1,0 +1,290 @@
+:root {
+  --primary-color: #00b754;
+  --secondary-color: #1b1b1b;
+  --third-color: #dbdadaa8;
+  --fourth-color: #f1f1f1;
+  --fifth-color: #e0e0e0;
+}
+
+@media (min-width: 763px) {
+  .w-35 {
+    width: 35%;
+  }
+}
+a {
+  text-decoration: none;
+}
+.main-container {
+  background-color: var(--third-color);
+  border-radius: 20px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.5s ease;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
+}
+
+.main-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.logo-container img {
+  width: 200px;
+  height: 200px;
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+  text-align: center;
+  margin-bottom: 20px;
+  background-color: #fff;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  padding: 10px;
+}
+
+.logo-container img:hover {
+  transform: scale(1.1) rotate(10deg);
+  -webkit-transform: scale(1.1) rotate(10deg);
+  -moz-transform: scale(1.1) rotate(10deg);
+  -ms-transform: scale(1.1) rotate(10deg);
+  -o-transform: scale(1.1) rotate(10deg);
+  padding: 0;
+}
+
+.info-box {
+  align-items: center;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  background-color: var(--fourth-color);
+  padding: 10px 15px;
+  border-radius: 8px;
+  transition: background-color 0.3s, transform 0.3s;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  color: var(--secondary-color);
+}
+
+.info-item:hover {
+  background-color: var(--fifth-color);
+  transform: translateY(-2px);
+}
+
+.info-item i {
+  margin-right: 8px;
+  font-size: 1.2rem;
+}
+
+.social-icons {
+  font-size: 25px;
+}
+
+.social-icons div {
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+}
+
+.social-icons div:hover {
+  transform: scale(1.3);
+  -webkit-transform: scale(1.3);
+  -moz-transform: scale(1.3);
+  -ms-transform: scale(1.3);
+  -o-transform: scale(1.3);
+}
+
+.social-icons .facebook i {
+  color: #1877f2;
+}
+
+.social-icons .instagram i {
+  color: #e4405f;
+}
+
+.social-icons .threads i {
+  color: #000000;
+}
+.social-icons .youtube i {
+  color: #ff0000;
+}
+.social-icons .tiktok i {
+  color: #010101;
+}
+.social-icons .x i {
+  color: #000000;
+}
+.social-icons .snapchat i {
+  color: #fffc00;
+}
+.social-icons .linkedin i {
+  color: #0077b5;
+}
+
+.nav-item .nav-links {
+  margin: 10px;
+  padding: 10px;
+  color: var(--secondary-color);
+}
+
+.nav-item .active {
+  background-color: var(--primary-color);
+  font-weight: bold;
+  font-size: 20px;
+  border: 2px solid var(--secondary-color);
+}
+
+.link-info {
+  background-color: var(--third-color);
+  padding: 20px;
+  border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  margin: 20px 0;
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+}
+
+.link-info:hover {
+  transform: scale(1.05) translateY(-10px);
+  -webkit-transform: scale(1.05) translateY(-10px);
+  -moz-transform: scale(1.05) translateY(-10px);
+  -ms-transform: scale(1.05) translateY(-10px);
+  -o-transform: scale(1.05) translateY(-10px);
+}
+
+.link-info img {
+  width: 70px;
+  height: 70px;
+  margin-right: 20px;
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.link-info img:hover {
+  transform: scale(1.1) rotate(10deg);
+  -webkit-transform: scale(1.1) rotate(10deg);
+  -moz-transform: scale(1.1) rotate(10deg);
+  -ms-transform: scale(1.1) rotate(10deg);
+  -o-transform: scale(1.1) rotate(10deg);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+}
+.link-info .details a {
+  border: 2px solid var(--secondary-color);
+  background-color: var(--primary-color);
+  border-radius: 30px;
+  color: var(--secondary-color);
+  padding: 10px 20px;
+  font-size: 18px;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  transition: all 0.5s ease;
+}
+
+.link-info .details a:hover {
+  border-color: var(--primary-color);
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+}
+.link-info .details h5 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--secondary-color);
+}
+form {
+  transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -o-transition: 0.5s;
+  background-color: var(--fourth-color);
+}
+form:hover {
+  transform: scale(1.05) translateY(-5px);
+  -webkit-transform: scale(1.05) translateY(-5px);
+  -moz-transform: scale(1.05) translateY(-5px);
+  -ms-transform: scale(1.05) translateY(-5px);
+  -o-transform: scale(1.05) translateY(-5px);
+}
+.custom-input {
+  padding: 10px 15px;
+  border: 2px solid var(--primary-color);
+  border-radius: 10px;
+  transition: 0.3s;
+  background-color: white;
+  color: var(--secondary-color);
+}
+
+.custom-input:focus {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  border-color: var(--secondary-color);
+  outline: none;
+}
+
+.custom-input:focus::placeholder {
+  color: var(--primary-color);
+  opacity: 1;
+}
+
+.custom-input::placeholder {
+  color: #aaa;
+  opacity: 1;
+}
+
+form button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  height: 40px;
+  font-weight: bold;
+  border: 2px solid var(--secondary-color);
+  transition: 0.3s;
+}
+
+form button:hover {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+footer {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  padding: 20px 0;
+  bottom: 0;
+  width: 100%;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.3);
+}
+
+footer .email i {
+  color: var(--primary-color);
+}

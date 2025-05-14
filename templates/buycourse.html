@@ -1,0 +1,32 @@
+{% extends 'include/main.html' %} {% load static %} {% block title %}Buy
+Course{% endblock%}{%block content%}
+<div class="container text-center mt-5 mb-5 p-5">
+  <h2>You Have To Complete Form To Continue</h2>
+</div>
+<div class="container m-5">
+  <div class="details rounded-pill">
+    <a href="{% url 'index' %}" class="btn btn-primary">Go Back Home</a>
+  </div>
+</div>
+
+<div class="container align-items-center mt-5 mb-5 pb-5">
+  <div class="link-info d-flex align-items-center gap-3">
+    <img src="{{course.img.url}}" alt="" />
+    <div class="details rounded-bill">
+      <div class="d-flex gap-3 align-items-center">
+        <h5>{{course.name}}</h5>
+        <span class="text-muted fw-bold fs-5">{{course.price}}$</span>
+      </div>
+    </div>
+  </div>
+  <form action="" class="p-4 rounded shadow mb-5" method="post">
+    {% csrf_token %}
+
+    <div class="form-group d-flex align-items-center">
+      <label for="">Credit</label>{{ sale.cridet }}
+    </div>
+
+    <button type="submit" class="px-4 rounded-pill mt-3 w-100">Buy</button>
+  </form>
+</div>
+{%endblock%}

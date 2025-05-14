@@ -1,0 +1,428 @@
+{%extends 'include/main.html'%}{%load static%}{%block content%}
+
+<section class="container mt-5 mb-5 p-5 main-container">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-md-4 logo-container">
+      <img src="{{info.img.url}}" alt="Logo" class="shadow" />
+    </div>
+    <div class="col-md-8">
+      <h2>{{info.name}}</h2>
+      <p class="text-muted">{{info.description}}</p>
+      <div class="container mb-3">
+        <div class="row">
+          <div class="col-md-6">
+            <div class="info-item text-center">
+              <i class="fa-solid fa-envelope"></i>
+              <span>{{email.email}}</span>
+            </div>
+          </div>
+          {% if user.is_authenticated %}
+          <div class="col-md-6">
+            <div class="info-item text-center">
+              <span>Welcome {{user.username}}</span>
+            </div>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      <div class="container">
+        <div class="row gap-4 info-box">
+          <div class="info-item col-md-3">
+            <i class="fa-solid fa-location-dot"></i>
+            <span>{{info.get_location_display}}</span>
+          </div>
+          <div class="info-item col-md-1 p-2">
+            <i class="fa-solid fa-user"></i>
+            <span>{{count}}</span>
+          </div>
+
+          <div class="info-item col-md-3">
+            <i class="fa-regular fa-user"></i>
+            <span>{{age}} Years</span>
+          </div>
+          {% if info.gender == 'male' %}
+          <div class="info-item col-md-3">
+            <i class="fa-solid fa-mars"></i>
+            <span>{{info.get_gender_display}} </span>
+          </div>
+          {% else %}
+          <div class="info-item col-md-3">
+            <i class="fa-solid fa-venus"></i>
+            <span>{{info.get_gender_display}} </span>
+          </div>
+          {% endif %}
+        </div>
+      </div>
+      <div class="d-flex gap-3 social-icons mt-2">
+        {% if social.facebook %}
+        <div class="facebook">
+          <a href="{{social.facebook}}"
+            ><i class="fa-brands fa-facebook"></i
+          ></a>
+        </div>
+        {% endif %} {% if social.instagram %}
+        <div class="instagram">
+          <a href="{{social.instagram}}"
+            ><i class="fa-brands fa-instagram"></i
+          ></a>
+        </div>
+        {% endif %} {% if social.threads %}
+        <div class="threads">
+          <a href="{{social.threads}}"><i class="fa-brands fa-threads"></i></a>
+        </div>
+        {% endif %} {% if social.youtube %}
+        <div class="youtube">
+          <a href="{{social.youtube}}"><i class="fa-brands fa-youtube"></i></a>
+        </div>
+        {% endif %} {% if social.tiktok %}
+        <div class="tiktok">
+          <a href="{{social.tiktok}}"><i class="fa-brands fa-tiktok"></i></a>
+        </div>
+        {% endif %} {% if social.snapchat %}
+        <div class="snapchat">
+          <a href="{{social.snapchat}}"
+            ><i class="fa-brands fa-snapchat"></i
+          ></a>
+        </div>
+        {% endif %}{% if social.x %}
+        <div class="x">
+          <a href="{{social.x}}"><i class="fa-brands fa-x-twitter"></i></a>
+        </div>
+        {% endif %} {% if social.linkedin %}
+        <div class="linkedin">
+          <a href="{{social.linkedin}}"
+            ><i class="fa-brands fa-linkedin-in"></i
+          ></a>
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="container text-center my-4">
+  <ul class="nav nav-pills justify-content-center" id="tabs" role="tablist">
+    {% if links %}
+    <li class="nav-item" role="presentation">
+      <a
+        class="nav-links active rounded-pill"
+        id="link-tab"
+        data-bs-toggle="pill"
+        href="#link"
+        role="tab"
+        aria-controls="link"
+        aria-selected="true"
+        >Links</a
+      >
+    </li>
+    {% endif %} {% if products %}
+    <li class="nav-item" role="presentation">
+      <a
+        class="nav-links rounded-pill"
+        id="product-tab"
+        data-bs-toggle="pill"
+        href="#product"
+        role="tab"
+        aria-controls="product"
+        aria-selected="false"
+        >Products
+      </a>
+    </li>
+    {% endif %} {% if courses %}
+    <li class="nav-item" role="presentation">
+      <a
+        class="nav-links rounded-pill"
+        id="course-tab"
+        data-bs-toggle="pill"
+        href="#course"
+        role="tab"
+        aria-controls="course"
+        aria-selected="false"
+        >Courses</a
+      >
+    </li>
+    {% endif %} {% if consultations %}
+    <li class="nav-item" role="presentation">
+      <a
+        class="nav-links rounded-pill"
+        id="consultation-tab"
+        data-bs-toggle="pill"
+        href="#consultation"
+        role="tab"
+        aria-controls="consultation"
+        aria-selected="false"
+        >Consultation</a
+      >
+    </li>
+    {% endif %} {% if info.video %}
+    <li class="nav-item" role="presentation">
+      <a
+        class="nav-links rounded-pill"
+        id="video-tab"
+        data-bs-toggle="pill"
+        href="#video"
+        role="tab"
+        aria-controls="video"
+        aria-selected="false"
+        >Video</a
+      >
+    </li>
+    {% endif %} {% if user.is_authenticated %} {% if user.is_superuser %}
+    <li class="nav-item" role="presentation">
+      <a class="nav-links rounded-pill" target="_blank" href="admin">Admin</a>
+    </li>
+    <li class="nav-item" role="presentation">
+      <a class="nav-links rounded-pill" href="{% url 'statistics' %}">Statistics</a>
+    </li>
+    {% endif %}
+    <li class="nav-item">
+      <a class="nav-links rounded-pill" href="{% url 'logout' %}">Log Out</a>
+    </li>
+    {% else %}
+    <li class="nav-item" role="presentation">
+      <a
+        class="nav-links rounded-pill"
+        id="login-tab"
+        data-bs-toggle="pill"
+        href="#login"
+        role="tab"
+        aria-controls="login"
+        aria-selected="false"
+        >Log In</a
+      >
+    </li>
+    <li class="nav-item" role="presentation">
+      <a
+        class="nav-links rounded-pill"
+        id="signup-tab"
+        data-bs-toggle="pill"
+        href="#signup"
+        role="tab"
+        aria-controls="signup"
+        aria-selected="false"
+        >Sign Up</a
+      >
+    </li>
+    {% endif %}
+  </ul>
+
+  <div class="tab-content mt-4" id="myTabContent">
+    {% if links %}
+    <div
+      class="tab-pane fade show active"
+      id="link"
+      role="tabpanel"
+      aria-labelledby="home-tab"
+    >
+      <div class="container">
+        <div class="row">
+          {% for link in links %}
+          <div class="col-md-3">
+            <div class="link-info d-flex align-items-center gap-3">
+              <img src="{{link.img.url}}" alt="" />
+              <div class="details rounded-pill">
+                <a href="{{link.link}}" class="">{{link.name}}</a>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    {% endif %} {% if products %}
+    <div
+      class="tab-pane fade"
+      id="product"
+      role="tabpanel"
+      aria-labelledby="about-tab"
+    >
+      <div class="container">
+        <div class="row">
+          {% for product in products %}
+          <div class="col-md-3">
+            <div class="link-info d-flex align-items-center gap-3">
+              <img src="{{ product.img.url }}" alt="" />
+              <div class="details rounded-pill">
+                <div class="d-flex gap-3 align-items-center">
+                  <p class="text-dark fw-bold">{{ product.name }}</h5>
+                  <span class="text-muted fs-5"
+                    >{{ product.price }}$</span
+                  >
+                </div>
+
+                {%if user.is_authenticated%}{%if product.id in pur_pro_ids%}
+                <a href="{{ product.link }}" class="btn btn-success">Get</a>
+                {% else %}
+                <a
+                  href="{% url 'product_sales' product.id %}"
+                  class="btn btn-primary"
+                  >Buy</a
+                >
+                {% endif %} {% else %}
+                <span class="nav-links rounded-pill fs-5 text-danger">
+                  You Have to Log In
+                </span>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    {% endif %} {% if courses %}
+    <div
+      class="tab-pane fade"
+      id="course"
+      role="tabpanel"
+      aria-labelledby="services-tab"
+    >
+      <div class="container">
+        <div class="row">
+          {% for course in courses %}
+          <div class="col-md-3">
+            <div class="link-info d-flex align-items-center gap-3">
+              <img src="{{ course.img.url }}" alt="" />
+              <div class="details rounded-pill">
+                <div class="d-flex gap-3 align-items-center">
+                  <p class="text-dark fw-bold">{{ course.name }}</h5>
+                  <span class="text-muted fs-5"
+                    >{{ course.price }}$</span
+                  >
+                </div>
+
+                {%if user.is_authenticated%}{%if course.id in pur_cor_ids%}
+                <a href="{{ course.link }}" class="btn btn-success">Get</a>
+                {% else %}
+                <a
+                  href="{% url 'course_sales' course.id %}"
+                  class="btn btn-primary"
+                  >Buy</a
+                >
+                {% endif %} {% else %}
+                <span class="nav-links rounded-pill fs-5 text-danger">
+                  You Have to Log In
+                </span>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    {% endif %} {% if consultations %}
+    <div
+      class="tab-pane fade"
+      id="consultation"
+      role="tabpanel"
+      aria-labelledby="contact-tab"
+    >
+      <div class="container">
+        <div class="row">
+          {% for cons in consultations %}
+          <div class="col-md-3">
+            <div class="link-info d-flex align-items-center gap-3">
+              <img src="{{ cons.img.url }}" alt="" />
+              <div class="details rounded-pill">
+                <div class="d-flex gap-3 align-items-center">
+                  <p class="text-dark fw-bold">{{ cons.name }}</h5>
+                  <span class="text-muted fs-5">{{ cons.price }}$</span>
+                </div>
+
+                {%if user.is_authenticated%}{%if cons.id in pur_cons_ids%}
+                <a href="{{ cons.link }}" class="btn btn-success">Get</a>
+                {% else %}
+                <a
+                  href="{% url 'consultation_sales' cons.id %}"
+                  class="btn btn-primary"
+                  >Buy</a
+                >
+                {% endif %} {% else %}
+                <span class="nav-links rounded-pill fs-5 text-danger">
+                  You Have to Log In
+                </span>
+                {% endif %}
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+    </div>
+    {% endif %} {% if info.video %}
+    <div
+      class="tab-pane fade"
+      id="video"
+      role="tabpanel"
+      aria-labelledby="contact-tab"
+    >
+      <video width="320" height="240" controls>
+        <source src="{{ info.video.url }}" type="video/mp4" />
+      </video>
+    </div>
+    {% endif %}
+    <div
+      class="tab-pane fade"
+      id="login"
+      role="tabpanel"
+      aria-labelledby="contact-tab"
+    >
+      <div class="container align-items-center">
+        <form
+          action="{% url 'signin' %}"
+          class="p-4 rounded shadow"
+          method="post"
+        >
+          {% csrf_token %}
+          <input type="hidden" name="form_type" value="login" />
+
+          <div class="form-group">
+            {{ login.username }} {{login.username.errors }}
+          </div>
+
+          <div class="form-group">
+            {{ login.password }} {{login.password.errors }}
+          </div>
+          <button type="submit" class="px-4 rounded-pill mt-3 w-100">
+            Log In
+          </button>
+        </form>
+      </div>
+    </div>
+    <div
+      class="tab-pane fade"
+      id="signup"
+      role="tabpanel"
+      aria-labelledby="contact-tab"
+    >
+      <div class="container align-items-center">
+        <form action="" class="p-4 rounded shadow" method="post">
+          {% csrf_token %}
+          <input type="hidden" name="form_type" value="signup" />
+
+          <div class="row g-3">
+            <div class="col-md-6">{{signup.username}}</div>
+            <div class="col-md-6">{{signup.email}}</div>
+            <div class="col-md-6">{{signup.password1}}</div>
+            <div class="col-md-6">{{signup.password2}}</div>
+            <div class="col-12 text-center">
+              <button type="submit" class="px-4 rounded-pill mt-3 w-100">
+                Sign Up
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% if error %}
+<div class="container">
+  <div class="alert alert-danger">
+    <i class="fa-solid fa-triangle-exclamation"></i>
+    <span>{{error}}</span>
+  </div>
+</div>
+{% endif %} {%endblock%}

@@ -1,0 +1,40 @@
+{%extends 'include/main.html'%}{%load static%}{% block title %}User
+Information{% endblock %}{%block content%}
+<div class="container text-center mt-5 mb-5 p-5">
+  <h2>You Have To Complete Form To Continue</h2>
+</div>
+
+<div class="container align-items-center mt-5 mb-5">
+  <form action="" class="p-4 rounded shadow" method="post">
+    {% csrf_token %}
+    <input type="hidden" name="form_type" value="login" />
+
+    <div class="form-group d-flex align-items-center">
+      <label for="">Name</label>{{ form.name }}
+    </div>
+    <div class="form-group d-flex align-items-center">
+      <label for="">Description</label>{{ form.description }}
+    </div>
+    <div class="form-group d-flex align-items-center">
+      <label for="">Location</label>
+      {{ form.location }}
+    </div>
+    <div class="form-group d-flex align-items-center">
+      <label for="">Gender</label> {{ form.gender }}
+    </div>
+    <div class="form-group d-flex align-items-center">
+      <label for="">Birthday</label>{{ form.birthday }}
+    </div>
+    {% if user.is_superuser %}
+    <div class="form-group d-flex align-items-center">
+      <label for="">Image</label>{{ form.img }}
+    </div>
+    <div class="form-group d-flex align-items-center">
+      <label for="">Video</label>{{ form.video }}
+    </div>
+    {% endif %}
+
+    <button type="submit" class="px-4 rounded-pill mt-3 w-100">Save</button>
+  </form>
+</div>
+{%endblock%}
